@@ -238,6 +238,13 @@ a {
   background: #fff;
   padding: 16px 18px 14px;
   box-shadow: 0 2px 8px rgba(25, 25, 25, 0.06);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ticket-card:hover {
+  box-shadow: 0 6px 14px rgba(25, 25, 25, 0.1);
+  transform: translateY(-1px);
 }
 
 .ticket-header {
@@ -376,6 +383,63 @@ a {
   margin: 0;
   color: #5f7182;
   font-size: 13px;
+}
+
+.task-list {
+  display: grid;
+  gap: 12px;
+}
+
+.task-list-item {
+  margin: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.task-list-item p {
+  margin: 0;
+  background: transparent;
+  color: #0b233c;
+  font-size: 15px;
+  line-height: 1.24;
+  font-weight: 600;
+  padding: 0;
+}
+
+.complete-btn {
+  width: 100%;
+  border: 0;
+  margin-top: 12px;
+  background: #09ab3f;
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.resolved-section {
+  margin-top: 18px;
+}
+
+.resolved-list {
+  display: grid;
+  gap: 7px;
+}
+
+.resolved-item {
+  margin: 0;
+  background: #d8e0f8;
+  color: #24325f;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
 }
 
 .footer {
@@ -682,6 +746,30 @@ a {
 
   .resolved-subtitle {
     font-size: 12px;
+  }
+
+  .task-list {
+    gap: 10px;
+  }
+
+  .task-list-item {
+    border-radius: 8px;
+    padding: 12px 10px 10px;
+  }
+
+  .task-list-item p {
+    font-size: 14px;
+  }
+
+  .complete-btn {
+    margin-top: 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .resolved-section {
+    margin-top: 14px;
   }
 
   .footer-inner {

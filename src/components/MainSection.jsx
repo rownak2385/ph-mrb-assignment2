@@ -1,8 +1,19 @@
-import tickets from '../data/tickets.json';
+function TicketCard({ ticket, onAddToTaskStatus }) {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onAddToTaskStatus(ticket);
+    }
+  };
 
-function TicketCard({ ticket }) {
   return (
-    <article className="ticket-card">
+    <article
+      className="ticket-card"
+      onClick={() => onAddToTaskStatus(ticket)}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+    >
       <div className="ticket-header">
         <h3>{ticket.title}</h3>
         <span className={`badge ${ticket.status === 'In Progress' ? 'badge-yellow' : 'badge-green'}`}>
@@ -34,23 +45,56 @@ function TicketCard({ ticket }) {
   );
 }
 
-export default function MainSection() {
+export default function MainSection({ tickets, inProgressTickets, resolvedTickets, onAddToTaskStatus, onCompleteTask }) {
   return (
     <main className="main-grid">
       <section>
         <h4 className="section-title">Customer Tickets</h4>
         <div className="tickets-grid">
           {tickets.map((ticket) => (
-            <TicketCard key={ticket.id} ticket={ticket} />
+            <TicketCard key={ticket.id} ticket={ticket} onAddToTaskStatus={onAddToTaskStatus} />
           ))}
         </div>
       </section>
 
       <aside className="task-status">
         <h4 className="section-title">Task Status</h4>
-        <p className="status-subtitle">Select a ticket to add to task status</p>
-        <h5 className="resolved-title">Resolved Task</h5>
-        <p className="resolved-subtitle">No resolved tasks yet.</p>
+        {inProgressTickets.length === 0 && <p className="status-subtitle">Select a ticket to add to task status</p>}
+
+        {inProgressTickets.length > 0 && (
+          <div className="task-list">
+            {inProgressTickets.map((ticket) => (
+              <div key={ticket.id} className="task-list-item">
+                <p>{ticket.title}</p>
+                <button
+                  type="button"
+                  className="complete-btn"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onCompleteTask(ticket.id);
+                  }}
+                >
+                  Complete
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="resolved-section">
+          <h5 className="resolved-title">Resolved Tasks</h5>
+          {resolvedTickets.length > 0 ? (
+            <div className="resolved-list">
+              {resolvedTickets.map((ticket) => (
+                <p key={ticket.id} className="resolved-item">
+                  {ticket.title}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <p className="resolved-subtitle">No resolved tasks yet.</p>
+          )}
+        </div>
       </aside>
     </main>
   );

@@ -1,17 +1,17 @@
-const stats = [
-  {
-    label: 'In-Progress',
-    value: 0,
-    className: 'card-progress'
-  },
-  {
-    label: 'Resolved',
-    value: 0,
-    className: 'card-resolved'
-  }
-];
+export default function Banner({ inProgressCount, resolvedCount }) {
+  const stats = [
+    {
+      label: 'In-Progress',
+      value: inProgressCount,
+      className: 'card-progress'
+    },
+    {
+      label: 'Resolved',
+      value: resolvedCount,
+      className: 'card-resolved'
+    }
+  ];
 
-export default function Banner() {
   return (
     <section className="banner">
       {stats.map((item) => (
