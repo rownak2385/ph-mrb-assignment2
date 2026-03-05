@@ -16,7 +16,7 @@ export default function Footer() {
           <ul>
             <li>About Us</li>
             <li>Our Mission</li>
-            <li>Contact Saled</li>
+            <li>Contact Sales</li>
           </ul>
         </section>
 

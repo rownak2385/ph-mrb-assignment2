@@ -1,4 +1,5 @@
 export default function Banner({ inProgressCount, resolvedCount }) {
+  // Count cards are derived from live app state in App.jsx.
   const stats = [
     {
       label: 'In-Progress',

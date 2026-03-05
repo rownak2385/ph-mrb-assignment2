@@ -528,6 +528,72 @@ a {
   padding-top: 16px;
 }
 
+.csz-toast-wrap {
+  top: auto !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  left: auto !important;
+  transform: none !important;
+  width: min(360px, calc(100vw - 32px));
+}
+
+.csz-toast {
+  min-height: auto;
+  border-radius: 10px;
+  border: 1px solid #e7eaee;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  font-family: inherit;
+  color: #213548;
+}
+
+.csz-toast-body {
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 8px 2px 8px 0;
+}
+
+.Toastify__close-button {
+  opacity: 0.55;
+}
+
+.Toastify__toast-icon svg {
+  fill: #09ab3f;
+}
+
+.Toastify__toast--warning .Toastify__toast-icon svg {
+  fill: #f0a801;
+}
+
+@keyframes csz-toast-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes csz-toast-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+.csz-toast-enter-left {
+  animation: csz-toast-in-left 220ms ease-out both;
+}
+
+.csz-toast-exit-left {
+  animation: csz-toast-out-left 180ms ease-in both;
+}
+
 @media (max-width: 1024px) {
   .page-shell {
     padding: 0;
@@ -793,5 +859,23 @@ a {
     width: 100%;
     margin: 0;
     padding: 24px 16px 12px;
+  }
+
+  .csz-toast-wrap {
+    top: auto !important;
+    right: auto !important;
+    bottom: calc(42px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100vw - 16px);
+    margin: 0 auto;
+  }
+
+  .csz-toast {
+    border-radius: 8px;
+  }
+
+  .csz-toast-body {
+    font-size: 12px;
   }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 export default function Navbar() {
+  // Controls mobile dropdown visibility.
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

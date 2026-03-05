@@ -1,5 +1,6 @@
 function TicketCard({ ticket, onAddToTaskStatus }) {
   const handleKeyDown = (event) => {
+    // Keyboard accessibility for card selection.
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       onAddToTaskStatus(ticket);
@@ -70,6 +71,7 @@ export default function MainSection({ tickets, inProgressTickets, resolvedTicket
                   type="button"
                   className="complete-btn"
                   onClick={(event) => {
+                    // Keep button click from triggering parent card interactions.
                     event.stopPropagation();
                     onCompleteTask(ticket.id);
                   }}
