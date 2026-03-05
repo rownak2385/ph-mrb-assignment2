@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import MainSection from './components/MainSection';
@@ -6,19 +7,19 @@ import Footer from './components/Footer';
 import initialTickets from './data/tickets.json';
 
 export default function App() {
-  const [customerTickets] = useState(initialTickets);
+  const [customerTickets, setCustomerTickets] = useState(initialTickets);
   const [inProgressTickets, setInProgressTickets] = useState([]);
   const [resolvedTickets, setResolvedTickets] = useState([]);
 
   const handleAddToTaskStatus = (ticket) => {
     const alreadyAdded = inProgressTickets.some((item) => item.id === ticket.id);
     if (alreadyAdded) {
-      window.alert('This ticket is already in Task Status.');
+      toast.warning('This ticket is already in Task Status.');
       return;
     }
 
     setInProgressTickets((prev) => [...prev, ticket]);
-    window.alert('Ticket added to Task Status.');
+    toast.success('Ticket added to Task Status.');
   };
 
   const handleCompleteTask = (ticketId) => {
@@ -27,7 +28,8 @@ export default function App() {
 
     setInProgressTickets((prev) => prev.filter((ticket) => ticket.id !== ticketId));
     setResolvedTickets((prev) => [ticketToResolve, ...prev]);
-    window.alert('Task marked as completed.');
+    setCustomerTickets((prev) => prev.filter((ticket) => ticket.id !== ticketId));
+    toast.success('Task marked as completed.');
   };
 
   return (
@@ -46,6 +48,7 @@ export default function App() {
         </div>
       </div>
       <Footer />
+      <ToastContainer position="top-right" autoClose={2200} hideProgressBar={false} newestOnTop closeOnClick />
     </div>
   );
 }
