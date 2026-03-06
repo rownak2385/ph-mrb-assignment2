@@ -314,9 +314,10 @@ a {
 }
 
 .ticket-meta {
-  display: flex;
+  display: grid;
+  grid-template-columns: 50px 138px 1fr 16px 66px;
   align-items: center;
-  gap: 12px;
+  column-gap: 10px;
   margin-top: 0;
   font-size: 12px;
   color: #5f7182;
@@ -324,12 +325,12 @@ a {
 
 .ticket-id {
   color: #52667a;
-  min-width: 50px;
+  min-width: 0;
 }
 
 .ticket-priority {
   font-weight: 500;
-  min-width: 126px;
+  min-width: 0;
 }
 
 .priority-high {
@@ -345,21 +346,25 @@ a {
 }
 
 .ticket-meta .ticket-customer {
-  margin-left: auto;
+  margin-left: 0;
   white-space: nowrap;
-  min-width: 92px;
+  min-width: 0;
   text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ticket-date-icon {
-  margin-left: 2px;
+  margin-left: 0;
   font-size: 15px;
   color: #65798e;
+  justify-self: center;
 }
 
 .ticket-date {
   color: #5f7182;
   white-space: nowrap;
+  justify-self: end;
 }
 
 .task-status {
@@ -774,6 +779,7 @@ a {
   }
 
   .ticket-meta {
+    display: flex;
     flex-wrap: wrap;
     gap: 8px 12px;
     font-size: 11px;

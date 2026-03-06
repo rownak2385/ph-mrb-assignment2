@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p className="copyright">© 2025 CS — Ticket System. All rights reserved.</p>
+        <p className="copyright">© 2026 CS — Ticket System. All rights reserved.</p>
       </div>
     </footer>
   );
