@@ -1,4 +1,4 @@
-function TicketCard({ ticket, onAddToTaskStatus }) {
+function TicketCard({ ticket, isInProgress, onAddToTaskStatus }) {
   const handleKeyDown = (event) => {
     // Keyboard accessibility for card selection.
     if (event.key === 'Enter' || event.key === ' ') {
@@ -17,9 +17,9 @@ function TicketCard({ ticket, onAddToTaskStatus }) {
     >
       <div className="ticket-header">
         <h3>{ticket.title}</h3>
-        <span className={`badge ${ticket.status === 'In Progress' ? 'badge-yellow' : 'badge-green'}`}>
+        <span className={`badge ${isInProgress ? 'badge-yellow' : 'badge-green'}`}>
           <span className="badge-dot" aria-hidden="true" />
-          {ticket.status}
+          {isInProgress ? 'In Progress' : 'Open'}
         </span>
       </div>
 
@@ -47,13 +47,20 @@ function TicketCard({ ticket, onAddToTaskStatus }) {
 }
 
 export default function MainSection({ tickets, inProgressTickets, resolvedTickets, onAddToTaskStatus, onCompleteTask }) {
+  const inProgressIdSet = new Set(inProgressTickets.map((ticket) => ticket.id));
+
   return (
     <main className="main-grid">
       <section>
         <h4 className="section-title">Customer Tickets</h4>
         <div className="tickets-grid">
           {tickets.map((ticket) => (
-            <TicketCard key={ticket.id} ticket={ticket} onAddToTaskStatus={onAddToTaskStatus} />
+            <TicketCard
+              key={ticket.id}
+              ticket={ticket}
+              isInProgress={inProgressIdSet.has(ticket.id)}
+              onAddToTaskStatus={onAddToTaskStatus}
+            />
           ))}
         </div>
       </section>

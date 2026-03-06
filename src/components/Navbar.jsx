@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
-      <h1 className="brand">CS — Ticket System</h1>
+      <h1 className="brand">TicketFlow</h1>
 
       <button
         type="button"

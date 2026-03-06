@@ -523,6 +523,7 @@ a {
   max-width: none;
   display: inline-block;
   text-align: center;
+  white-space: nowrap;
 }
 
 .footer-bottom {
